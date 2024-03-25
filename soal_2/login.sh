@@ -83,7 +83,7 @@ case $option in
             fi
         else
             echo "[ $(date +'%d/%m/%Y %H:%M:%S') ] [LOGIN FAILED] ERROR Password Incorrect" >> auth.log
-            echo "ERROR Password Incorrect"
+            echo "ERROR incorrect password!"
             read -p "Forgot Password? (Y/N): " choice
             if [ "$choice" == "Y" ]; then
                 pw_forgot "$email"
