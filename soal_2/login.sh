@@ -37,8 +37,8 @@ admin_menu() {
     echo "1. Add User"
     echo "2. Edit User"
     echo "3. Delete User"
-    read action
-    case $action in
+    read option
+    case $option in
         1)
             ./register.sh
             ;;
