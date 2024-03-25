@@ -9,7 +9,6 @@ check_pw() {
     local password=$2
     local save_pw=$(grep "^$email:" user.txt | cut -d: -f5)
     local admincheck=$(grep "^$email:" user.txt | cut -d: -f6)
-
     if [ "$password" == "$save_pw_decrypted" ]; then
         return 0
     else
@@ -33,34 +32,27 @@ pw_forgot() {
 }
 
 admin_menu() {
-    echo "Admin Menu:"
-    echo "1. Add User"
-    echo "2. Edit User"
+    echo "Admin Menu:";echo "1. Add User";echo "2. Edit User"
     echo "3. Delete User"
     read option
     case $option in
         1)
-            ./register.sh
-            ;;
+            ./register.sh ;;
         2)
-            ./edit_user.sh
-            ;;
+            ./edit_user.sh ;;
         3)
-            ./delete_user.sh
-            ;;
+            ./delete_user.sh  ;;
         *)
-            echo "Choose 1, 2, or 3!"
-            ;;
+            echo "Choose 1, 2, or 3!"  ;;
     esac
 }
 
 echo "Welcome  to Login System"
-echo "1. Login"
-echo "2. Forgot Password"
+echo "1. Login"; echo "2. Forgot Password"
 read option
 case $option in
     1)
-        read -p "Enter your email: " email
+       echo "Enter your email: "; read email
         read -sp "Enter your password: " password
         echo
         grep -q "^$email:" user.txt
