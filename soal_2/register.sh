@@ -2,7 +2,6 @@
 encryption() {
     echo -n "$1" | base64
 }
- # Encrypt password
 encrypted_password=$(encryption "$password")
 
 check_duplicate_email() {
@@ -31,7 +30,6 @@ register_user() {
         exit 1
     fi
 
-    # Write user data to user.txt with admin flag
     echo "$email:$username:$sec_quest:$answer:$encrypted_password:$user_type" >> user.txt
 
     if [[ $user_type == "admin" ]]; then
