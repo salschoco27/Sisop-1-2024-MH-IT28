@@ -9,7 +9,6 @@ echo "   "
 
 echo "3 Kategori Produk dengan Profit Tertinggi"
 awk -F ',' 'NR>1 {sum[$14]+=$20} END {for (i in sum) print i "=" sum[i]}' Sandbox.csv | sort -t ',' -k 14nr | head -4
-#awk -F ',' '{sum[$14]+=$20} END {for (i in sum) print i " =  " sum[i]}' Sandbox.csv | sort -t ',' -k14,14nr | head -n 4
 echo "   "
 
 echo "Purchase date dan Quantity Produk yang dipesan oleh Adriens"
