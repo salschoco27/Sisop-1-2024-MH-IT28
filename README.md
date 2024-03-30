@@ -325,9 +325,20 @@ while IFS=',' read -r name region element weapon; do
     fi
 done < /home/satya051/Destktop/TESST3/genshinstuff/list_character.csv
 ```
+
+### Perubahan:
+-perubahan nama pada file .jpg karakter menjadi sesuai format (region-nama-element-senjata) dari yang sebelumnya hanya muncul nama saja
+
+*Sebelum
+![image](https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/163504787/1cbf9da8-dbf1-408f-932e-4c85ada4a840)
+
+*Sesudah
+![image](https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/163504787/bcbf297d-c281-4fd5-8e5e-326b34df86a0)
+
 ### KENDALA: 
 -tidak dapat melakukan sortir terhadap karakter dimana foto karakter dimasukkan dalam folder berdasarkan region nya masing-masing sehingga tidak dapat melanjutkan ke dalam script search.sh
 -tidak dapat membuat folder berdasarkan region yang ada di dalam file .csv 
+-masih tidak dapat menghitung jumlah senjata 
 
 
 
