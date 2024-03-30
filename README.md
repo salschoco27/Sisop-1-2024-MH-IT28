@@ -244,6 +244,10 @@ esac
 ### Dokumentasi
 <img width="722" alt="image" src="https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/151063684/14bcefba-2ca5-416d-a932-f0eee2e8cd91">
 
+### ERROR
+- Tidak bisa menampilkan password.
+- Ketika ada email yang menggunakan kata _admin_, user type nya tidak terganti (tetap menjadi user).
+
 ## Soal 4
 Deskripsi soal
 Soal nomor 4 ini berisikan program yang bertujuan untuk memantau penggunaan RAM dan ukuran suatu direktori pada komputer. Terdapat dua script yang digunakan yaitu minute_log.sh dan aggregate_minutes_to_hourly_log.sh. Script minute_log.sh digunakan untuk mengumpulkan informasi dalam setiap menit sedangkan aggregate_minutes_to_hourly_log.sh digunakan untuk mengumpulkan dan mengagregasi data dari file-file log yang dihasilkan oleh minute_log.sh setiap jam.
