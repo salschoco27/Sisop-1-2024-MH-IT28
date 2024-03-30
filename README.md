@@ -326,19 +326,43 @@ while IFS=',' read -r name region element weapon; do
 done < /home/satya051/Destktop/TESST3/genshinstuff/list_character.csv
 ```
 
-### Perubahan:
+### Dokumentasi:
 -perubahan nama pada file .jpg karakter menjadi sesuai format (region-nama-element-senjata) dari yang sebelumnya hanya muncul nama saja
 
-*Sebelum
-![image](https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/163504787/1cbf9da8-dbf1-408f-932e-4c85ada4a840)
+* Sebelum Revisi
+ -yang terlihat di console
+  ![Screenshot from 2024-03-30 22-51-27](https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/163504787/4e307493-0ead-4446-aa6e-b331b303e8be)
+ 
+ -yang terlihat di files
+  ![image](https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/163504787/1cbf9da8-dbf1-408f-932e-4c85ada4a840)
 
-*Sesudah
-![image](https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/163504787/bcbf297d-c281-4fd5-8e5e-326b34df86a0)
+* Sesudah Revisi
+-yang terlihat di console
+ ![Screenshot from 2024-03-30 22-52-26](https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/163504787/44b8c323-0e5d-4682-a5e0-f2921ce6d515)
 
-### KENDALA: 
--tidak dapat melakukan sortir terhadap karakter dimana foto karakter dimasukkan dalam folder berdasarkan region nya masing-masing sehingga tidak dapat melanjutkan ke dalam script search.sh
--tidak dapat membuat folder berdasarkan region yang ada di dalam file .csv 
--masih tidak dapat menghitung jumlah senjata 
+-yang terlihat di files
+ ![image](https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/163504787/bcbf297d-c281-4fd5-8e5e-326b34df86a0)
+
+* Kendala yang masih dialami:
+  -masih tidak dapat menghitung jumlah senjata
+ ![Screenshot from 2024-03-30 22-49-56](https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/163504787/8ad53d5d-e117-429c-86e3-8390e4342994)
+
+   
+  
+
+
+### Change log & KENDALA: 
+* Sebelum Revisi:
+  -tidak dapat membuat folder berdasarkan region yang ada di dalam file .csv
+  -hasil de-encrypt hanya berupa nama karakter dan tidak seperti format yang diminta pada soal
+  -tidak dapat menghitung jumlah senjata
+  
+* Sesudah Revisi:
+  -berhasil mengubah nama karakter menjadi lebih spesifik dan sesuai dengan format yang diminta oleh soal
+  -folder region berhasil dibuat namum tidak dapat melakukan sortir terhadap karakter dimana foto karakter dimasukkan dalam folder berdasarkan region nya masing-masing sehingga tidak dapat melanjutkan ke dalam script search.sh
+  -masih tidak dapat menghitung jumlah senjata
+
+
 
 
 
