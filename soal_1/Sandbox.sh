@@ -1,9 +1,13 @@
 #!/bin/bash
 echo "3 Customer dengan Sales Tertinggi"
+#(sebelum revisi)
+#sort -t ',' -k17,17 -r Sandbox.csv | head -n 5 
 sort -t ',' -k 17 -nr Sandbox.csv | head -n 3 | awk -F ',' '{print $6 "      "   $17}'
 echo "   "
 
 echo "3 Data Pembelian oleh Customer dengan Profit Terkecil"
+#(sebelum revisi)
+#sort -t ',' -k20,20 Sandbox.csv | head -n 5
 sort -t ',' -k20,20 Sandbox.csv | head -n 3 |awk -F ',' '{print $6 "     " $20}'
 echo "   "
 
