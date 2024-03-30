@@ -251,6 +251,88 @@ esac
 - Tidak bisa menampilkan password.
 - Ketika ada email yang menggunakan kata _admin_, user type nya tidak terganti (tetap menjadi user).
 
+## Soal 3
+
+##catatan: 
+ditemukan kendala dimana tidak dapat melakukan sortir terhadap karakter dimana foto karakter dimasukkan dalam folder berdasarkan region nya masing-masing sehingga tidak dapat melanjutkan
+ke dalam script search.sh
+
+##Deskripsi soal
+
+Alyss ingin mengoleksi foto-foto karakter game Genshin Impact yang diberikan oleh Yanuar dalam bentuk file yang namanya terenkripsi dengan heksadesimal. Untuk itu, dia harus:
+A. Membuat script awal.sh yang dapat:
+
+    1. Mendownload file dari link yang diberikan Yanuar
+    2. Unzip file tersebut
+    3. Mendekode nama file yang terenkripsi dengan heksadesimal
+    4. Merename file sesuai format "Region - Nama - Elemen - Senjata.jpg" berdasarkan data pada file list_character.csv
+    5. Mengumpulkan file ke dalam folder berdasarkan region karakter
+    6. Menghitung dan menampilkan jumlah pengguna setiap senjata
+    7. Menghapus file-file yang tidak digunakan
+    
+B. Membuat script search.sh yang dapat:
+
+    1. Melakukan pengecekan setiap 1 detik pada setiap file gambar
+    2. Mengekstrak value dari setiap gambar menggunakan steghide
+    3. Mendekripsi file teks yang diekstrak dari gambar untuk mendapatkan URL
+    4. Menghentikan program dan mendownload file berdasarkan URL yang diperoleh
+    5. Menghapus file teks jika bukan yang dicari, atau menyimpan hasil dekripsinya jika itu yang dicari
+    6. Mencatat log setiap pengecekan gambar dalam format tertentu
+    
+Tujuan akhirnya pada soal adalah agar Alyss dapat mengoleksi foto-foto karakter Genshin Impact dengan rapi, mengetahui jumlah pengguna setiap senjata, dan menemukan gambar rahasia yang disinggung oleh Yanuar.
+
+### awal.sh
+### langkah pengerjaan
+1. salin kode skrip ke dalam file yang bernama awal.sh
+
+a. endownload file dari link yang diberikan Yanuar & unzip file yang di download tadi
+```
+curl -L "https://drive.usercontent.google.com/u/0/uc?id=1oGHdTf4_76_RacfmQIV4i7os4sGwa9vN&export=download" -o genshin.zip && unzip genshin.zip -d genshinstuff
+
+cd genshinstuff 
+
+unzip genshin_character.zip
+```
+b. de-encrypt nama file yang terenkripsi dengan heksadesimal 
+```
+cd genshin_character
+# De-encrypt nama file
+
+for file in *.jpg;
+ do
+    rename=$(echo $file | xxd -r -p)
+    mv "$file" "$rename.jpg"
+```
+c.rename nama file berdasarkan data yang berada di dalam list_character.csv
+```
+    updated=$(awk -F, "/$rename/"'{OFS=0;print $2 "-" $1 "-" $3 "-" $4}' ../list_character.csv)
+    mv "$rename.jpg" "$updated.jpg"
+done
+```
+d.membaca file list_character.csv dan sortir file {nama karakter yang sudah di de-encrypt}.jpg ke folder region asal masing-masing karakter
+
+```
+while IFS=',' read -r name region element weapon; do
+    # Memproses setiap baris
+    filename="${region} - ${nama} - ${element} - ${senjata}.jpg"
+    original_filename="$updated.jpg"
+
+    # Membuat direktori region jika belum ada
+    mkdir -p "$region"
+
+    # Cek apakah file JPG dengan nama asli ada
+    if [ -f "$original_filename" ]; then
+        # Mengubah nama file JPG sesuai dengan format baru
+        mv "$original_filename" "$region/$filename"
+    else
+        echo "File $original_filename tidak ditemukan."
+    fi
+done < /home/satya051/Destktop/TESST3/genshinstuff/list_character.csv
+```
+
+
+
+
 ## Soal 4
 Deskripsi soal
 Soal nomor 4 ini berisikan program yang bertujuan untuk memantau penggunaan RAM dan ukuran suatu direktori pada komputer. Terdapat dua script yang digunakan yaitu minute_log.sh dan aggregate_minutes_to_hourly_log.sh. Script minute_log.sh digunakan untuk mengumpulkan informasi dalam setiap menit sedangkan aggregate_minutes_to_hourly_log.sh digunakan untuk mengumpulkan dan mengagregasi data dari file-file log yang dihasilkan oleh minute_log.sh setiap jam.
