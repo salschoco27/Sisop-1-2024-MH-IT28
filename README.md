@@ -354,12 +354,16 @@ done < /home/satya051/Destktop/TESST3/genshinstuff/list_character.csv
 ### Change log & KENDALA: 
 * Sebelum Revisi:
   -tidak dapat membuat folder berdasarkan region yang ada di dalam file .csv
+  
   -hasil de-encrypt hanya berupa nama karakter dan tidak seperti format yang diminta pada soal
+  
   -tidak dapat menghitung jumlah senjata
   
 * Sesudah Revisi:
   -berhasil mengubah nama karakter menjadi lebih spesifik dan sesuai dengan format yang diminta oleh soal
+  
   -folder region berhasil dibuat namum tidak dapat melakukan sortir terhadap karakter dimana foto karakter dimasukkan dalam folder berdasarkan region nya masing-masing sehingga tidak dapat melanjutkan ke dalam script search.sh
+  
   -masih tidak dapat menghitung jumlah senjata
 
 
