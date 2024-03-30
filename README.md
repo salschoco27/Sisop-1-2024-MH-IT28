@@ -242,7 +242,7 @@ esac
 ### Catatan
 - Password harusnya di decrypt juga.
 ### Dokumentasi
-
+<img width="722" alt="image" src="https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/151063684/14bcefba-2ca5-416d-a932-f0eee2e8cd91">
 
 ## Soal 4
 Deskripsi soal
