@@ -30,8 +30,10 @@ Maka Code menjadi
 awk -F ',' 'NR>1 {sum[$14]+=$20} END {for (i in sum) print i "=" sum[i]}' Sandbox.csv | sort -t ',' -k 14nr | head -4
 ```
 
+### Dokumentasi
+
 ## Soal 2
->register.sh
+### register.sh
 
 * Function untuk password encryption
 ```
@@ -112,7 +114,7 @@ done
 register_user "$email" "$username" "$sec_quest" "$answer" "$password"
 ```
 
->login.sh
+### login.sh
 * Code untuk melakukan decryption password dan menyimpannya.
 ```
 decryption() {
@@ -228,6 +230,10 @@ case $option in
         ;;
 esac
 ```
+### Catatan
+- Password harusnya di decrypt juga.
+### Dokumentasi
+
 
 ## Soal 4
 Deskripsi soal
