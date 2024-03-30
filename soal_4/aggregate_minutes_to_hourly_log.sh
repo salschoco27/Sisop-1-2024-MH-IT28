@@ -48,7 +48,7 @@ awk -F "," '{sum+=$1}  END{print "average,"sum/NR","}
             ' temphour.txt | paste -s -d '' >> /home/$user/log/"metrics_agg_$(date +"%Y%m%d%H").log"
 
 # Mengelola izin file
-chmod go-rwx "/home/$user/log/"metrics_agg_$(date +"%Y%m%d%H").log""
+chmod +x aggregate_minutes_to_hourly_log.sh
 
 #  Hapus file teks sementara
 rm temphour.txt
