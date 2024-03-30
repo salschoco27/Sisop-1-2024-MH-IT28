@@ -214,7 +214,7 @@ esac
 
 ## Soal 4
 Deskripsi soal
-Soal nomor 4 ini berisikan program yang bertujuan untuk memantau penggunaan RAM dan ukuran suatu direktori pada komputer. Penggunaan RAM akan dimonitor menggunakan perintah free -m, sedangkan ukuran direktori akan dimonitor menggunakan perintah du -sh <target_path>. Semua metrik yang diperoleh akan dicatat dalam file log dengan format metrics_{YmdHms}.log, di mana {YmdHms} adalah waktu saat skrip dijalankan. Terdapat dua script yang digunakan yaitu minute_log.sh dan aggregate_minutes_to_hourly_log.sh. Script minute_log.sh digunakan untuk mengumpulkan informasi dalam setiap menit sedangkan aggregate_minutes_to_hourly_log.sh digunakan untuk mengumpulkan dan mengagregasi data dari file-file log yang dihasilkan oleh minute_log.sh setiap jam.
+Soal nomor 4 ini berisikan program yang bertujuan untuk memantau penggunaan RAM dan ukuran suatu direktori pada komputer. Terdapat dua script yang digunakan yaitu minute_log.sh dan aggregate_minutes_to_hourly_log.sh. Script minute_log.sh digunakan untuk mengumpulkan informasi dalam setiap menit sedangkan aggregate_minutes_to_hourly_log.sh digunakan untuk mengumpulkan dan mengagregasi data dari file-file log yang dihasilkan oleh minute_log.sh setiap jam.
 ## Langkah langkah
 1. Salin kode skrip berikut ke dalam file bernama minute_log.sh
    ```
@@ -239,12 +239,12 @@ Soal nomor 4 ini berisikan program yang bertujuan untuk memantau penggunaan RAM 
 2. Berikan izin eksekusi pada skrip dengan menjalankan perintah
    ```
    chmod +x minute_log.sh
-3. Buka crontab untuk pengguna dengan perintah:
+3. Buka crontab untuk pengguna dengan perintah :
    ```
    crontab -e
-4. Tambahkan baris berikut pada file crontab
+4. Tambahkan baris berikut pada file crontab 
    ```
-   * * * * * /path/to/minute_log.sh
+   * * * * * /home/aca/Documents/SISOP/Modul1/soal_nomor_4/minute_log.sh
 5. Gantilah /path/to/minute_log.sh dengan jalur lengkap ke skrip minute_log.sh yang telah Anda simpan.
 6. Simpan dan keluar dari editor crontab ( Cntrl + x ) lalu save tekan Y
 7. Buat satu script lagi untuk membuat agregasi file log ke satuan jam. Salin kode berikut ke dalam file bernama aggregate_minutes_to_hourly_log.sh
@@ -298,3 +298,12 @@ Soal nomor 4 ini berisikan program yang bertujuan untuk memantau penggunaan RAM 
     chmod +x aggregate_minutes_to_hourly_log.sh
     #  Hapus file teks sementara
     rm temphour.txt
+8. Agar dieksekusi setiap jam, buka crontab untuk pengguna dengan perintah :
+   ```
+   crontab -e
+9. Tambahkan baris berikut pada file crontab :
+     ```
+     0 * * * * /home/aca/Documents/SISOP/Modul1/soal_nomor_4/aggregate_minutes_to_hourly_log.sh
+10. Gantilah /path/to/aggregate_minutes_to_hourly_log.sh dengan jalur lengkap ke skrip aggregate_minutes_to_hourly_log.sh yang telah disimpan.
+11. Simpan dan keluar dari editor crontab.
+12. Dengan langkah-langkah di atas program akan secara otomatis memantau penggunaan RAM dan ukuran direktori setiap menit serta membuat agregasi data tersebut ke dalam file log per jam.
