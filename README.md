@@ -253,11 +253,7 @@ esac
 
 ## Soal 3
 
-##catatan: 
-ditemukan kendala dimana tidak dapat melakukan sortir terhadap karakter dimana foto karakter dimasukkan dalam folder berdasarkan region nya masing-masing sehingga tidak dapat melanjutkan
-ke dalam script search.sh
-
-##Deskripsi soal
+### Deskripsi soal
 
 Alyss ingin mengoleksi foto-foto karakter game Genshin Impact yang diberikan oleh Yanuar dalam bentuk file yang namanya terenkripsi dengan heksadesimal. Untuk itu, dia harus:
 A. Membuat script awal.sh yang dapat:
@@ -329,6 +325,9 @@ while IFS=',' read -r name region element weapon; do
     fi
 done < /home/satya051/Destktop/TESST3/genshinstuff/list_character.csv
 ```
+### KENDALA: 
+-tidak dapat melakukan sortir terhadap karakter dimana foto karakter dimasukkan dalam folder berdasarkan region nya masing-masing sehingga tidak dapat melanjutkan ke dalam script search.sh
+-tidak dapat membuat folder berdasarkan region yang ada di dalam file .csv 
 
 
 
