@@ -216,15 +216,6 @@ esac
 Deskripsi soal
 Soal nomor 4 ini berisikan program yang bertujuan untuk memantau penggunaan RAM dan ukuran suatu direktori pada komputer. Penggunaan RAM akan dimonitor menggunakan perintah free -m, sedangkan ukuran direktori akan dimonitor menggunakan perintah du -sh <target_path>. Semua metrik yang diperoleh akan dicatat dalam file log dengan format metrics_{YmdHms}.log, di mana {YmdHms} adalah waktu saat skrip dijalankan. Terdapat dua script yang digunakan yaitu minute_log.sh dan aggregate_minutes_to_hourly_log.sh. Script minute_log.sh digunakan untuk mengumpulkan informasi dalam setiap menit sedangkan aggregate_minutes_to_hourly_log.sh digunakan untuk mengumpulkan dan mengagregasi data dari file-file log yang dihasilkan oleh minute_log.sh setiap jam.
 ## Langkah langkah
-1. Buka terminal dan masukkan
+1. Salin kode skrip berikut ke dalam file bernama minute_log.sh
    ```
-   nano minute_log.sh
-2. Salin kode berikut kedalam script
-   ```
-
-
-3. Berikan izin eksekusi pada skrip dengan menjalankan perintah
-```
-chmod +x aggregate_minutes_to_hourly_log.sh
-
    
