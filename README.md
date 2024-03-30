@@ -292,39 +292,50 @@ unzip genshin_character.zip
 b. de-encrypt nama file yang terenkripsi dengan heksadesimal 
 ```
 cd genshin_character
-# De-encrypt nama file
+for file in *.jpg; do
+    filename=$(printf '%b\n' "${file##*/}")
+    rename=$(echo "$filename" | xxd -r -p)
+    if [ "$rename" != "genshin_character" ]; then
+        mv "$file" "$rename"
 
-for file in *.jpg;
- do
-    rename=$(echo $file | xxd -r -p)
-    mv "$file" "$rename.jpg"
 ```
 c.rename nama file berdasarkan data yang berada di dalam list_character.csv
 ```
-    updated=$(awk -F, "/$rename/"'{OFS=0;print $2 "-" $1 "-" $3 "-" $4}' ../list_character.csv)
-    mv "$rename.jpg" "$updated.jpg"
+updated=$(awk -F, "/$rename/"'{OFS=0;print $2 "-" $1 "-" $3 "-" $4}' ../list_character.csv)
+        mv "$rename" "$updated.jpg" ##ganti nama lagi tapi disesuaikan dengan list_character.csv nya
+    fi
 done
 ```
 d.membaca file list_character.csv dan sortir file {nama karakter yang sudah di de-encrypt}.jpg ke folder region asal masing-masing karakter
 
 ```
-while IFS=',' read -r name region element weapon; do
-    # Memproses setiap baris
+while IFS=',' read -r nama region element senjata; do
+    # cek data di file .csv
     filename="${region} - ${nama} - ${element} - ${senjata}.jpg"
-    original_filename="$updated.jpg"
+    namaori="$updated.jpg"
 
-    # Membuat direktori region jika belum ada
+    # buat direct region utk char
     mkdir -p "$region"
 
-    # Cek apakah file JPG dengan nama asli ada
-    if [ -f "$original_filename" ]; then
+    # Cek file JPG dengan nama asli ada/tidak
+    if [ -f "$namaori" ]; then
         # Mengubah nama file JPG sesuai dengan format baru
-        mv "$original_filename" "$region/$filename"
+        mv "$namaori" "$region/$filename"
     else
-        echo "File $original_filename tidak ditemukan."
+        echo "File $namaori tidak ditemukan."
     fi
-done < /home/satya051/Destktop/TESST3/genshinstuff/list_character.csv
+done < ../list_character.csv
 ```
+e. menghitung jumlah user senjata di dalam file .csv 
+
+```
+for weapon in $(awk -F',' '{print $4}' ../list_character.csv | sort | uniq)
+do
+    count=$(find . -name "*$weapon*" | wc -l)
+    echo "[$weapon] : $count"
+done < ../list_character.csv
+```
+
 
 ### Dokumentasi:
 -perubahan nama pada file .jpg karakter menjadi sesuai format (region-nama-element-senjata) dari yang sebelumnya hanya muncul nama saja
