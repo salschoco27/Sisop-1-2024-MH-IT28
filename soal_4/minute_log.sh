@@ -17,7 +17,7 @@ awk '/Mem/ {print $2","$3","$4","$5","$6","$7","};
      ' temp.txt | paste -s -d '' >> /home/$user/log/"metrics_$(date +"%Y%m%d%H%M%S").log"
 
 # Mengelola izin
-chmod go-rwx "/home/$user/log/""metrics_$(date +"%Y%m%d%H%M%S").log"    
+chmod +x minute_log.sh
 
 # Menghapus file teks sementara
 rm temp.txt
