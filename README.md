@@ -429,12 +429,15 @@ Soal nomor 4 ini berisikan program yang bertujuan untuk memantau penggunaan RAM 
     chmod +x aggregate_minutes_to_hourly_log.sh
     #  Hapus file teks sementara
     rm temphour.txt
-8. Agar dieksekusi setiap jam, buka crontab untuk pengguna dengan perintah :
+8. Berikan izin eksekusi pada skrip dengan menjalankan perintah
+   ```
+    chmod +x aggregate_minutes_to_hourly_log.sh
+9. Agar dieksekusi setiap jam, buka crontab untuk pengguna dengan perintah :
    ```
    crontab -e
-9. Tambahkan baris berikut pada file crontab :
+10. Tambahkan baris berikut pada file crontab :
      ```
      0 * * * * /home/aca/Documents/SISOP/Modul1/soal_nomor_4/aggregate_minutes_to_hourly_log.sh
-10. Gantilah /path/to/aggregate_minutes_to_hourly_log.sh dengan jalur lengkap ke skrip aggregate_minutes_to_hourly_log.sh yang telah disimpan.
-11. Simpan dan keluar dari editor crontab.
-12. Dengan langkah-langkah di atas program akan secara otomatis memantau penggunaan RAM dan ukuran direktori setiap menit serta membuat agregasi data tersebut ke dalam file log per jam.
+11. Gantilah /path/to/aggregate_minutes_to_hourly_log.sh dengan jalur lengkap ke skrip aggregate_minutes_to_hourly_log.sh yang telah disimpan.
+12. Simpan dan keluar dari editor crontab.
+13. Dengan langkah-langkah di atas program akan secara otomatis memantau penggunaan RAM dan ukuran direktori setiap menit serta membuat agregasi data tersebut ke dalam file log per jam.
