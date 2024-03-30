@@ -218,4 +218,35 @@ Soal nomor 4 ini berisikan program yang bertujuan untuk memantau penggunaan RAM 
 ## Langkah langkah
 1. Salin kode skrip berikut ke dalam file bernama minute_log.sh
    ```
-   
+   #!/bin/bash
+   ### TAMBAHKAN INI KE CRONTAB
+   # * * * * * /home/aca/Documents/SISOP/Modul1/soal_nomor_4/minute_log.sh
+   # Mengekstrak penggunaan memori ke file teks sementara
+   free -m > temp.txt
+   # Mengekstrak penggunaan disk dari direktori home pengguna ke file teks sementara
+   user=whoami && du -sh /home/$user >> temp.txt
+   # Hasil cetak menggunakan Echo dan AWK
+   echo
+   "mem_total,mem_used,mem_free,mem_shared,mem_buff,mem_available,swap_total,swap_used,swap_free,path,path_size" > /home/$user/log/"metrics_$(date +"%Y%m%d%H%M%S").log"
+   awk '/Mem/ {print $2","$3","$4","$5","$6","$7","};
+     /Swa/ {print $2","$3","$4","};
+     /home/ {print $2","$1}
+     ' temp.txt | paste -s -d '' >> /home/$user/log/"metrics_$(date +"%Y%m%d%H%M%S").log"
+   # Mengelola izin
+   chmod go-rwx "/home/$user/log/""metrics_$(date +"%Y%m%d%H%M%S").log"
+   # Menghapus file teks sementara
+   rm temp.txt
+2. Berikan izin eksekusi pada skrip dengan menjalankan perintah
+   ```
+   chmod +x minute_log.sh
+3. Buka crontab untuk pengguna dengan perintah:
+   ```
+   crontab -e
+4. Tambahkan baris berikut pada file crontab
+   ```
+   * * * * * /path/to/minute_log.sh
+5. Gantilah /path/to/minute_log.sh dengan jalur lengkap ke skrip minute_log.sh yang telah Anda simpan.
+6. Simpan dan keluar dari editor crontab ( Cntrl + x ) lalu save tekan Y
+7. Buat satu script lagi untuk membuat agregasi file log ke satuan jam. Salin kode berikut ke dalam file bernama aggregate_minutes_to_hourly_log.sh
+    ```
+    
