@@ -103,3 +103,7 @@ register_user "$email" "$username" "$sec_quest" "$answer" "$password"
     else
         echo "Your answer is incorrect."
     fi
+## Soal 4
+Deskripsi soal
+Soal nomor 4 ini berisikan program yang bertujuan untuk memantau penggunaan RAM dan ukuran suatu direktori pada komputer. Penggunaan RAM akan dimonitor menggunakan perintah free -m, sedangkan ukuran direktori akan dimonitor menggunakan perintah du -sh <target_path>. Semua metrik yang diperoleh akan dicatat dalam file log dengan format metrics_{YmdHms}.log, di mana {YmdHms} adalah waktu saat skrip dijalankan. Terdapat dua script yang digunakan yaitu minute_log.sh dan aggregate_minutes_to_hourly_log.sh. Script minute_log.sh digunakan untuk mengumpulkan informasi dalam setiap menit sedangkan aggregate_minutes_to_hourly_log.sh digunakan untuk mengumpulkan dan mengagregasi data dari file-file log yang dihasilkan oleh minute_log.sh setiap jam.
+## langkah langkah
