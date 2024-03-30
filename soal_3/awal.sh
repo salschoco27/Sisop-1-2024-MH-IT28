@@ -8,9 +8,9 @@ cd genshinstuff
 
 unzip genshin_character.zip
 
-#do wotever the numba told me, wait...yea, unencrypt or some shit
+#unencrypt yang udah di unzip
 
-
+##LAMA##
 for file in genshin_character/*
 do
     filename=$(printf '%b\n' "${file##*/}")
@@ -18,9 +18,23 @@ do
     if [ "$newname" != "genshin_character" ]; then
         mv "$file" "genshin_character/$newname"
     fi
+done 
+
+##BARU##
+for file in *.jpg; do
+    filename=$(printf '%b\n' "${file##*/}")
+    rename=$(echo "$filename" | xxd -r -p)
+    if [ "$rename" != "genshin_character" ]; then
+        mv "$file" "$rename"
+        
+        updated=$(awk -F, "/$rename/"'{OFS=0;print $2 "-" $1 "-" $3 "-" $4}' ../list_character.csv)
+        mv "$rename" "$updated.jpg" ##ganti nama lagi tapi disesuaikan dengan list_character.csv nya
+    fi
 done
 
-#sort region and shit
+#sort region & name berdasarkan data di .csv
+
+##LAMA##
 while IFS=',' read -r name region element weapon
 do
     filename=$(find genshin_character -name "$name.*" | head -n 1)
@@ -32,22 +46,28 @@ do
 fi
 done < list_character.csv
 
+##BARU##
+##mengecek yang updated sudah sesuai dengan .csv lalu dimasukkan ke directory/folder baru berdasarkan data .csv
+while IFS=',' read -r nama region element senjata; do
+    # cek data di file .csv
+    filename="${region} - ${nama} - ${element} - ${senjata}.jpg"
+    namaori="$updated.jpg"
 
-#rename file foto berdasarkan yang ada di list_character.csv
-while IFS=',' read -r name region element weapon
-do
-    filename=$(find genshin_character -name "$name.*" | head -n 1)
-    if [ -n "$filename" ]; then
-        extension="${filename##*.}"
-        nama_baru="$Region - $Nama - $Element - $Senjata.$extension"
-        mkdir -p "$Region - $Name"
-        mv "$filename" "$Region - $Nama/$nama_baru" #still figuring why this wont work????????
+    # buat direct region utk char
+    mkdir -p "$region"
+
+    # Cek file JPG dengan nama asli ada/tidak
+    if [ -f "$namaori" ]; then
+        # Mengubah nama file JPG sesuai dengan format baru
+        mv "$namaori" "$region/$filename"
+    else
+        echo "File $namaori tidak ditemukan."
     fi
-done < list_character.csv
+done < ../list_character.csv
 
 # hitung jumlah user senjatanya dari .csv nya
-for weapon in $(awk -F',' '{print $4}' list_character.csv | sort | uniq)
+for weapon in $(awk -F',' '{print $4}' ../list_character.csv | sort | uniq)
 do
     count=$(find . -name "*$weapon*" | wc -l)
     echo "[$weapon] : $count"
-done < list_character.csv
+done < ../list_character.csv
