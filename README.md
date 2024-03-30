@@ -219,3 +219,4 @@ Soal nomor 4 ini berisikan program yang bertujuan untuk memantau penggunaan RAM 
 1. Buka terminal dan masukkan
    ```
    nano minute_log.sh
+2. 
