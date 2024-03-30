@@ -32,12 +32,15 @@ awk -F ',' 'NR>1 {sum[$14]+=$20} END {for (i in sum) print i "=" sum[i]}' Sandbo
 
 ### Dokumentasi
 **Keterangan:** yang bertanda pagar (#) adalah code setelah direvisi.
+
 <img width="478" alt="image" src="https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/151063684/49139438-55cf-477f-8938-87bddc177d75">
 
 **Sebelum direvisi**
+
 <img width="668" alt="image" src="https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/151063684/182841bf-c336-4073-b8a7-1d1d499a5f17">
 
 **Setelah direvisi**
+
 <img width="366" alt="image" src="https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/151063684/b392c427-4306-4791-97cc-128f6490763a">
 
 
