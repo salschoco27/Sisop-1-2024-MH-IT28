@@ -480,3 +480,4 @@ Soal nomor 4 ini berisikan program yang bertujuan untuk memantau penggunaan RAM 
 11. Gantilah /path/to/aggregate_minutes_to_hourly_log.sh dengan jalur lengkap ke skrip aggregate_minutes_to_hourly_log.sh yang telah disimpan.
 12. Simpan dan keluar dari editor crontab.
 13. Dengan langkah-langkah di atas program akan secara otomatis memantau penggunaan RAM dan ukuran direktori setiap menit serta membuat agregasi data tersebut ke dalam file log per jam.
+![WhatsApp Image 2024-03-30 at 23 42 35_39e138e7](https://github.com/salschoco27/Sisop-1-2024-MH-IT28/assets/150428950/cd78f617-62b3-45c0-95dd-e1d471005b13)
